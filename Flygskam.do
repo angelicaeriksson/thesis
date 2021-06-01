@@ -58,7 +58,8 @@ synth passengerpc lnGDPpc HCPI train_pc percent_p area_per_airport TaxesperGDP u
 
 
 ***
-
+clear
+clear matrix
 use "Main_results.dta" 
 rename _Y_synthetic _Y_synthetic_Original
 
@@ -118,7 +119,8 @@ synth passengerpc lnGDPpc HCPI train_pc percent_p area_per_airport TaxesperGDP u
 
 
 * Make the graph 
-
+clear
+clear matrix
 use "Main_results.dta" 
 rename _Y_synthetic _Y_synthetic_Original
  
@@ -131,7 +133,7 @@ rename _Y_synthetic _Y_synthetic_Norway
 drop _merge
 
 merge 1:1 _time using "Sweden_without_UK.dta"
-rename _Y_synthetic _Y_synthetic_Norway
+rename _Y_synthetic _Y_synthetic_UK
 drop _merge
 
 twoway (line _Y_treated _time, lcolor(black) lwidth(medthick) lpattern(solid)) (line _Y_synthetic_Original _time, lcolor(gray) lpattern(dash)) (line _Y_synthetic_Finland _time, lcolor(green) lpattern(dash)) (line _Y_synthetic_Norway _time, lcolor(red) lpattern(dash)) (line _Y_synthetic_UK _time, lcolor(dknavy) lpattern (dash)), ytitle(Numbers of passengers per capita) xtitle(Year) xline(2018, lpattern(dash) lcolor(black))
